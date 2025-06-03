@@ -1,0 +1,69 @@
+﻿<Window x:Class="MTZainIqbal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTZainIqbal"
+        mc:Ignorable="d"
+        Title="Vehicle Inventory Management System" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Height="410" Width="620">
+    <Canvas Background="Beige">
+        <Button x:Name="btnReset" Content="Reset Listbox to Default" Canvas.Left="43" Canvas.Top="35" Width="196" Background="LightBlue" FontWeight="Bold" Click="btnReset_Click"/>
+
+        <ListBox x:Name="lstVehicles" Height="253" Width="196" Canvas.Left="43" Canvas.Top="70" SelectionChanged="lstVehicles_SelectionChanged" Background="LightGreen"/>
+        <Button x:Name="btnClearList" Content="Clear Listbox" Canvas.Left="43" Canvas.Top="340" Click="btnClearList_Click" Background="LightBlue" FontWeight="Bold"/>
+        <RadioButton x:Name="rdoCar" Content="Car" Canvas.Left="300" Canvas.Top="55" FontWeight="Bold"/>
+        <RadioButton x:Name="rdoMotorcycle" Content="Motorcycle" Canvas.Left="365" Canvas.Top="55" FontWeight="Bold"/>
+
+        <Label Content="Id:" Canvas.Left="300" Canvas.Top="80" FontWeight="Bold"/>
+        <TextBox x:Name="txtId" Canvas.Left="325" Canvas.Top="85" Width="120" IsReadOnly="True"/>
+        <Label Content="Name:" Canvas.Left="280" Canvas.Top="130" FontWeight="Bold"/>
+        <TextBox x:Name="txtName" Canvas.Left="325" Canvas.Top="135" Width="120"/>
+        <Label Content="Rental Price:" Canvas.Left="246" Canvas.Top="180" FontWeight="Bold"/>
+        <TextBox x:Name="txtRentalPrice" Canvas.Left="325" Canvas.Top="185" Width="120"/>
+        <Label Content="Category:" Canvas.Left="261" Canvas.Top="230" FontWeight="Bold"/>
+        <ComboBox x:Name="txtCategory" Canvas.Left="325" Canvas.Top="235" Width="120">
+            <ComboBoxItem Content="Hatchback"/>
+            <ComboBoxItem Content="Sedan"/>
+            <ComboBoxItem Content="SUV"/>
+            <ComboBoxItem Content="Sports"/>
+            <ComboBoxItem Content="Cruiser"/>
+            <ComboBoxItem Content="Dirt"/>
+        </ComboBox>
+        <Label Content="Type:" Canvas.Left="285" Canvas.Top="280" FontWeight="Bold"/>
+        <ComboBox x:Name="txtType" Canvas.Left="325" Canvas.Top="285" Width="120">
+            <ComboBoxItem Content="Standard"/>
+            <ComboBoxItem Content="Exotic"/>
+            <ComboBoxItem Content="Bike"/>
+            <ComboBoxItem Content="Trike"/>
+        </ComboBox>
+
+        <CheckBox x:Name="chkIsReserved" Content="Reserved" Canvas.Left="325" Canvas.Top="340" FontWeight="Bold"/>
+
+        <Button x:Name="btnAdd" Content="Add" Canvas.Left="505" Canvas.Top="90" Width="70" Height="25" Click="btnAdd_Click" Background="LightBlue" FontWeight="Bold"/>
+        <Button x:Name="btnEdit" Content="Edit" Canvas.Left="505" Canvas.Top="140" Width="70" Height="25" Click="btnEdit_Click" Background="LightBlue" FontWeight="Bold">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=txtId}" Value="">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnDelete" Content="Delete" Canvas.Left="505" Canvas.Top="190" Width="70" Height="25" Background="LightBlue" FontWeight="Bold" Click="btnDelete_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=txtId}" Value="">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="btnClear" Content="Clear" Canvas.Left="505" Canvas.Top="240" Width="70" Height="25" Click="btnClear_Click" Background="LightBlue" FontWeight="Bold"/>
+    </Canvas>
+</Window>
